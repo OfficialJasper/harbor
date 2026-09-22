@@ -12,98 +12,6 @@
     "default": "dark"
   },
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Introduction",
-            "pages": [
-              "introduction/welcome",
-              "introduction/what-is-harbor",
-              "introduction/features",
-              "introduction/requirements"
-            ]
-          },
-          {
-            "group": "Getting Started",
-            "pages": [
-              "getting-started/installation",
-              "getting-started/quick-start",
-              "getting-started/initial-setup",
-              "getting-started/permissions",
-              "getting-started/configuration"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Security",
-        "groups": [
-          {
-            "group": "Security Modules",
-            "pages": [
-              "security/anti-raid",
-              "security/anti-nuke",
-              "security/anti-spam",
-              "security/anti-bot",
-              "security/verification",
-              "security/security-logs",
-              "security/threat-detection"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Commands",
-        "groups": [
-          {
-            "group": "Commands",
-            "pages": [
-              "commands/overview",
-              "commands/moderation",
-              "commands/security",
-              "commands/configuration"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Guides",
-            "pages": [
-              "guides/securing-a-new-server",
-              "guides/setting-up-verification",
-              "guides/configuring-anti-raid",
-              "guides/handling-a-raid",
-              "guides/troubleshooting"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Reference",
-        "groups": [
-          {
-            "group": "Reference",
-            "pages": [
-              "reference/permissions",
-              "reference/configuration-reference",
-              "reference/error-codes",
-              "reference/faq"
-            ]
-          },
-          {
-            "group": "Updates",
-            "pages": [
-              "reference/changelog"
-            ]
-          }
-        ]
-      }
-    ],
     "global": {
       "anchors": [
         {
@@ -117,7 +25,16 @@
           "href": "https://harbor.xyz/dashboard"
         }
       ]
-    }
+    },
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "getting-started/introduction",
+          "getting-started/quickstart"
+        ]
+      }
+    ]
   },
   "footer": {
     "socials": {

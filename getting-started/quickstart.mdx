@@ -1,0 +1,32 @@
+---
+title: "Quickstart: Protect Your Discord Server with Harbor"
+sidebarTitle: "Quickstart"
+description: "Get Harbor System fully configured and protecting your Discord server with essential security modules enabled in under 10 minutes."
+---
+
+This guide covers the minimum setup required to get Harbor System actively protecting your server. By the end, you will have a log channel configured, anti-raid and anti-spam protections enabled, and an optional verification gate in place for new members.
+
+<Steps>
+  <Step title="Run the Setup Wizard">
+    Use `/harbor setup` in any channel. The bot will walk you through initial configuration interactively, prompting you to set a log channel, alert role, and admin role before enabling any modules.
+  </Step>
+  <Step title="Set a Security Log Channel">
+    Use `/harbor logs channel:#your-channel` to designate where security events will be reported. All automated actions and alerts will be posted there.
+  </Step>
+  <Step title="Enable Anti-Raid Protection">
+    Use `/harbor anti-raid enable` to turn on join flood detection. Harbor will automatically detect and respond to abnormal join spikes that indicate a raid attempt.
+  </Step>
+  <Step title="Enable Anti-Spam">
+    Use `/harbor anti-spam enable` to activate message spam filtering across all channels.
+  </Step>
+  <Step title="Enable Verification">
+    Use `/harbor verify enable` to require new members to complete verification before they can chat. Recommended for public servers.
+  </Step>
+  <Step title="Review Your Config">
+    Use `/harbor config` to review all active settings and confirm every module is in the state you expect.
+  </Step>
+</Steps>
+
+<Tip>
+  Use `/harbor status` at any time to see which security modules are active.
+</Tip>
