@@ -1,22 +1,15 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Harbor System",
-  "theme": "luma",
+  "theme": "maple",
   "colors": {
-    "primary": "#2E6BE6",
-    "light": "#4F8EF7",
-    "dark": "#1A3A6E"
+    "primary": "#EC4899",
+    "light": "#F472B6",
+    "dark": "#831843"
   },
   "favicon": "/favicon.svg",
   "appearance": {
     "default": "dark"
-  },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Join Discord",
-      "href": "https://discord.gg/harborsystem"
-    }
   },
   "navigation": {
     "tabs": [
@@ -110,11 +103,57 @@
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Support Server",
+          "icon": "discord",
+          "href": "https://discord.gg/harborsystem"
+        },
+        {
+          "anchor": "Dashboard",
+          "icon": "grid-2",
+          "href": "https://harbor.xyz/dashboard"
+        }
+      ]
+    }
   },
   "footer": {
     "socials": {
       "discord": "https://discord.gg/harborsystem"
-    }
+    },
+    "links": [
+      {
+        "header": "Legal Information",
+        "items": [
+          {
+            "label": "Terms of Service",
+            "href": "https://harbor.xyz/terms"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "https://harbor.xyz/privacy"
+          },
+          {
+            "label": "Refund Policy",
+            "href": "https://harbor.xyz/refund"
+          }
+        ]
+      },
+      {
+        "header": "Contact Us",
+        "items": [
+          {
+            "label": "Support",
+            "href": "https://discord.gg/harborsystem"
+          },
+          {
+            "label": "Email",
+            "href": "mailto:support@harbor.xyz"
+          }
+        ]
+      }
+    ]
   }
 }
