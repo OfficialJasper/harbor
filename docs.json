@@ -1,72 +1,98 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Harbor System",
+  "theme": "luma",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2E6BE6",
+    "light": "#4F8EF7",
+    "dark": "#1A3A6E"
   },
   "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+  "appearance": {
+    "default": "dark"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Join Discord",
+      "href": "https://discord.gg/harborsystem"
     }
   },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+  "topbar": {
+    "style": "default"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "introduction/welcome",
+              "introduction/what-is-harbor",
+              "introduction/features",
+              "introduction/requirements"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "getting-started/installation",
+              "getting-started/quick-start",
+              "getting-started/initial-setup",
+              "getting-started/permissions",
+              "getting-started/configuration"
+            ]
+          },
+          {
+            "group": "Security",
+            "pages": [
+              "security/anti-raid",
+              "security/anti-nuke",
+              "security/anti-spam",
+              "security/anti-bot",
+              "security/verification",
+              "security/security-logs",
+              "security/threat-detection"
+            ]
+          },
+          {
+            "group": "Commands",
+            "pages": [
+              "commands/overview",
+              "commands/moderation",
+              "commands/security",
+              "commands/configuration"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/securing-a-new-server",
+              "guides/setting-up-verification",
+              "guides/configuring-anti-raid",
+              "guides/handling-a-raid",
+              "guides/troubleshooting"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/permissions",
+              "reference/configuration-reference",
+              "reference/error-codes",
+              "reference/changelog",
+              "reference/faq"
+            ]
+          }
+        ]
+      }
     ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "discord": "https://discord.gg/harborsystem"
     }
   }
 }

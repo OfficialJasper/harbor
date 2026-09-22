@@ -1,0 +1,51 @@
+---
+title: "Quick Start: Set Up Harbor System in Minutes"
+sidebarTitle: "Quick Start"
+description: "Get Harbor System fully configured and protecting your Discord server with essential security modules enabled in under 10 minutes."
+---
+
+This guide covers the minimum setup required to get Harbor System actively protecting your server. By the end, you will have a log channel configured, anti-raid and anti-spam protections enabled, and an optional verification gate in place for new members. You can fine-tune every setting later — the goal here is to get your core defenses online quickly.
+
+<Steps>
+  <Step title="Run the Setup Wizard">
+    Use `/harbor setup` in any channel. The bot will walk you through initial configuration interactively, prompting you to set a log channel, alert role, and admin role before enabling any modules. Completing the wizard is the fastest way to get a working baseline configuration.
+  </Step>
+  <Step title="Set a Security Log Channel">
+    Use `/harbor logs channel:#your-channel` to designate where security events will be reported. Replace `#your-channel` with a channel your moderation team monitors. All automated actions and alerts will be posted there.
+  </Step>
+  <Step title="Enable Anti-Raid Protection">
+    Use `/harbor anti-raid enable` to turn on join flood detection. Harbor System will automatically detect and respond to abnormal join spikes that indicate a raid attempt.
+  </Step>
+  <Step title="Enable Anti-Spam">
+    Use `/harbor anti-spam enable` to activate message spam filtering. This monitors all channels for users sending messages at rates that exceed the configured threshold and takes automated action.
+  </Step>
+  <Step title="Enable Verification (optional but recommended for public servers)">
+    Use `/harbor verify enable` to require new members to complete verification before they can chat. This adds a friction layer that blocks the majority of automated bot accounts from interacting with your community.
+  </Step>
+  <Step title="Review Your Config">
+    Use `/harbor config` to review all active settings and confirm that each module is in the state you expect. The output shows every module's status alongside its current configuration values.
+  </Step>
+</Steps>
+
+<Tip>
+  After the initial setup, use `/harbor status` at any time to see which security modules are active and their current settings.
+</Tip>
+
+## Next Steps
+
+With your core modules running, you can deepen your protection by configuring individual modules, tuning thresholds, and exploring additional security features.
+
+<CardGroup cols={2}>
+  <Card title="Initial Setup" icon="wrench" href="/getting-started/initial-setup">
+    Configure log channels, alert roles, admin roles, and more.
+  </Card>
+  <Card title="Anti-Raid" icon="shield" href="/security/anti-raid">
+    Tune join flood detection thresholds and automated responses.
+  </Card>
+  <Card title="Verification" icon="user-check" href="/security/verification">
+    Set up member verification to block bots and new accounts.
+  </Card>
+  <Card title="All Commands" icon="terminal" href="/commands/overview">
+    Browse the full list of Harbor System slash commands.
+  </Card>
+</CardGroup>

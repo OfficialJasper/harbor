@@ -1,0 +1,64 @@
+---
+title: "Harbor System FAQ: Frequently Asked Questions"
+sidebarTitle: "FAQ"
+description: "Answers to the most common questions about Harbor System: pricing, permissions, supported servers, module behavior, and getting support."
+---
+
+Below are answers to the most common questions about Harbor System. If your question isn't covered here, you can reach the support team through the Discord server linked at the bottom of this page.
+
+<Accordion title="Is Harbor System free?">
+  Harbor System offers a free tier with core security features. Premium plans [PRICING_INFO_PLACEHOLDER] are available for additional modules and higher limits. Pricing details will be announced on the official website.
+</Accordion>
+
+<Accordion title="How many servers can I add Harbor System to?">
+  There is no limit on the number of servers you can add Harbor System to. Each server maintains its own independent configuration, so settings in one server never affect another.
+</Accordion>
+
+<Accordion title="Does Harbor System support servers of any size?">
+  Yes. Harbor System is designed to scale from small private communities to large public servers with thousands of members. Every threshold and limit can be tuned per server, so you can calibrate the bot to fit your community's normal activity patterns regardless of size.
+</Accordion>
+
+<Accordion title="What happens if Harbor System goes offline?">
+  If Harbor System is offline, automated protections are temporarily inactive. Manual moderation commands will also be unavailable during this period. You can check the current status at [STATUS_URL_PLACEHOLDER]. Planned maintenance windows are kept minimal and announced in advance when possible.
+</Accordion>
+
+<Accordion title="Can I use Harbor System alongside other moderation bots?">
+  Yes. Harbor System is designed to work alongside other bots. Use the whitelist to exempt other bots from security checks so they aren't flagged or actioned. To avoid conflicts, ensure only one bot handles the same automated action — for example, don't configure two bots to auto-ban the same event simultaneously.
+</Accordion>
+
+<Accordion title="Will Harbor System store my server's messages?">
+  Harbor System does not store message content. It processes messages in memory to evaluate spam rules, but does not log or persist member messages anywhere. Event logs stored by Harbor contain metadata — user IDs, timestamps, and actions taken — but never the text of member messages.
+</Accordion>
+
+<Accordion title="How do I report a false positive (legitimate member actioned)?">
+  Run `/harbor history user:@Member` to locate the case ID for the action. Then use the appropriate reverse command — `/harbor unban` or `/harbor unmute` — to lift the action. If you want to prevent the same member from being actioned again, add them to the whitelist with `/harbor whitelist add user:@Member`. If you notice a pattern of false positives, report it in the support Discord so the team can investigate the detection logic.
+</Accordion>
+
+<Accordion title="How do I remove Harbor System from my server?">
+  Open **Server Settings → Integrations → Bots**, locate Harbor System, and remove it. Alternatively, kick the bot directly from your member list. All configuration data associated with your server will be permanently deleted within [DATA_RETENTION_PLACEHOLDER] days of removal.
+</Accordion>
+
+<Accordion title="Does Harbor System work with Discord Community servers?">
+  Yes. Harbor System fully supports Discord Community servers, including membership screening. If you use Discord's built-in membership screening, coordinate it with Harbor's verification module to avoid double-gating new members — for example, disable Harbor's verification gate if Discord's native screening is already collecting agreements from new joiners.
+</Accordion>
+
+<Accordion title="Where can I get support?">
+  Join the Harbor System Discord support server: [DISCORD_INVITE_URL]. You can also open a support ticket directly through the bot using `/harbor support` [PLACEHOLDER COMMAND]. The support team monitors both channels and typically responds within 24 hours.
+</Accordion>
+
+<CardGroup cols={2}>
+  <Card
+    title="Troubleshooting"
+    icon="wrench"
+    href="/guides/troubleshooting"
+  >
+    Step-by-step solutions for common Harbor System setup and behavior issues.
+  </Card>
+  <Card
+    title="Error Codes"
+    icon="triangle-exclamation"
+    href="/reference/error-codes"
+  >
+    Look up every Harbor System error code with its cause and recommended fix.
+  </Card>
+</CardGroup>

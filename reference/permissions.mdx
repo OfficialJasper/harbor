@@ -1,0 +1,69 @@
+---
+title: "Harbor System Permission Levels and Access Control"
+sidebarTitle: "Permissions"
+description: "Full reference for Harbor System's permission model: admin roles, moderator roles, whitelist system, and per-command access requirements."
+---
+
+Harbor System operates its own permission layer on top of Discord's native permissions, giving you fine-grained control over who can configure and use the bot. Rather than relying solely on Discord roles and channel overrides, Harbor introduces dedicated permission tiers that govern access to every command and configuration option. This means you can grant moderation capabilities to a team member without giving them Discord-level Administrator privileges, and you can lock down sensitive configuration to a specific admin role independent of server ownership.
+
+## Permission Tiers
+
+| Tier | Who Has It | Can Do |
+|---|---|---|
+| Server Owner | Discord server owner | Everything; bypasses all Harbor restrictions |
+| Harbor Admin | Configured admin role (or Discord Administrator) | All Harbor commands including configuration and reset |
+| Harbor Moderator | Configured mod role | Moderation commands, view flags, view whitelist |
+| Regular Member | Everyone else | None — the bot operates silently for regular members |
+
+## Setting Permission Roles
+
+Assign your Harbor Admin and Harbor Moderator tiers using the `/harbor config` command. You must be the server owner or a Discord Administrator to set these roles initially.
+
+- **Set the admin role:** `/harbor config admin-role:@YourAdminRole`
+- **Set the moderator role:** `/harbor config mod-role:@YourModRole`
+
+Multiple roles can hold each tier. Because Harbor defers to Discord's role system for membership, any member who holds an assigned admin or mod role automatically inherits the corresponding Harbor permission tier. Assign additional roles to the same tier by configuring each one through Discord's role management and including them in a role that already holds the tier.
+
+## Whitelist System
+
+The whitelist exempts specific users, roles, and bots from all automated Harbor security actions. Whitelisted entities are never flagged, actioned, or challenged by any Harbor module, regardless of their behavior.
+
+**Adding entries to the whitelist:**
+
+- Add a user: `/harbor whitelist add user:@Username`
+- Add a role: `/harbor whitelist add role:@RoleName`
+- Add a bot: `/harbor whitelist add bot:[BOT_ID]`
+
+**Removing an entry:**
+
+- `/harbor whitelist remove user:@Username`
+
+**Viewing the whitelist:**
+
+- `/harbor whitelist list`
+
+<Warning>
+Use the whitelist sparingly. Whitelisted accounts bypass all security modules entirely, including Anti-Raid, Anti-Spam, Anti-Nuke, and threat detection. Only whitelist accounts you fully trust, such as co-admins, verified partner bots, and your own automation accounts.
+</Warning>
+
+## Per-Command Permission Requirements
+
+The table below lists every Harbor command category and the minimum permission tier required to use it.
+
+| Command Category | Required Tier |
+|---|---|
+| `/harbor setup` | Admin |
+| `/harbor config` | Admin |
+| `/harbor reset` | Admin |
+| Module enable/disable | Admin |
+| Module configuration | Admin |
+| `/harbor whitelist` | Admin |
+| `/harbor ban` / `/harbor kick` / `/harbor mute` / `/harbor warn` | Moderator |
+| `/harbor history` | Moderator |
+| `/harbor flags list` / `/harbor flags review` | Moderator |
+| `/harbor status` | Admin |
+| `/harbor anti-raid unlock` | Moderator |
+
+<Note>
+Harbor checks its own permission tiers first, then falls back to Discord's native permissions. A Discord Administrator who hasn't been set as a Harbor Admin can still use Harbor admin commands.
+</Note>

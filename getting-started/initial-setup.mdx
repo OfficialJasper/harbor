@@ -1,0 +1,76 @@
+---
+title: "Initial Harbor System Setup and Configuration"
+sidebarTitle: "Initial Setup"
+description: "Configure Harbor System's core settings after installation: log channels, alert roles, admin roles, and module toggles for your server."
+---
+
+This page covers the configuration steps you should complete after installing Harbor System, before enabling individual security modules. Getting the core settings right — particularly your log channel, alert role, and admin role — ensures that Harbor System can report what it is doing and that the right people in your server can manage it.
+
+<Info>
+  All configuration is stored per-server. Changes you make in one server do not affect your other servers.
+</Info>
+
+## Setup Wizard
+
+The fastest way to complete initial setup is to run the setup wizard with `/harbor setup`. The wizard walks you through the most important settings interactively, prompting you for each value and confirming your selections before saving them. If you have already run the wizard, you can re-run it at any time to update your baseline configuration.
+
+## Essential Configuration
+
+After or instead of the wizard, you can set each core value individually using the commands below.
+
+**Log Channel**
+
+```
+/harbor logs channel:#security-logs
+```
+
+Designates the channel where Harbor System posts all security events, automated action reports, and alerts. Choose a channel that your moderation team monitors regularly. Harbor System must have permission to send messages and embed links in this channel.
+
+**Alert Role**
+
+```
+/harbor config alert-role:@Moderators
+```
+
+Sets the role that Harbor System will ping when a high-severity event occurs, such as a detected raid or nuke attempt. Assign this to your active moderation role so the right people are notified immediately.
+
+**Admin Role**
+
+```
+/harbor config admin-role:@Admins
+```
+
+Defines which role can run Harbor System management commands. Members with this role can enable and disable modules, change thresholds, and modify any Harbor configuration. Members without this role or server administrator permissions will not be able to run sensitive commands.
+
+**Action Channel**
+
+```
+/harbor config action-channel:#harbor-actions
+```
+
+Sets a separate channel where Harbor System posts automated action reports — a log of every kick, ban, or role assignment Harbor performs automatically. Keeping this separate from the alert log makes it easier to audit Harbor's activity.
+
+## Module Overview
+
+The table below lists every security module available in Harbor System, its default state after installation, and the command to enable it.
+
+| Module | Default State | Command to Enable |
+|---|---|---|
+| Anti-Raid | Disabled | `/harbor anti-raid enable` |
+| Anti-Nuke | Disabled | `/harbor anti-nuke enable` |
+| Anti-Spam | Disabled | `/harbor anti-spam enable` |
+| Anti-Bot | Disabled | `/harbor anti-bot enable` |
+| Verification | Disabled | `/harbor verify enable` |
+| Threat Detection | Disabled | `/harbor threat-detection enable` |
+
+You can disable any module at any time by replacing `enable` with `disable` in the corresponding command.
+
+## Testing Your Setup
+
+Once you have completed your initial configuration, run `/harbor status` to verify the bot is responding and review the health of your setup. The status output shows:
+
+- Which modules are currently enabled or disabled
+- Whether the log channel and alert role are correctly configured
+- A permissions health check confirming Harbor System has the access it needs
+
+If any item in the status output shows a warning or error, address it before enabling security modules. Common issues include Harbor System lacking permission to post in the designated log channel, or the bot's role sitting below the roles it needs to moderate.

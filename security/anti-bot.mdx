@@ -1,0 +1,49 @@
+---
+title: "Anti-Bot: Block Malicious Bots and Selfbots"
+sidebarTitle: "Anti-Bot"
+description: "Use Harbor System's anti-bot module to detect and remove unauthorized bots, selfbots, and known malicious automated accounts from your server."
+---
+
+Unauthorized bots and selfbots represent a significant threat to Discord communities. Malicious bots can flood channels with spam, scrape member data, distribute phishing links, or act as raid tools. Selfbots — user accounts operated by automated scripts — violate Discord's Terms of Service and are frequently used to evade detection. Harbor System's anti-bot module identifies these accounts by cross-referencing join events against an internal threat database, analyzing behavior patterns, and flagging any automated account not explicitly authorized for your server.
+
+## What Anti-Bot Detects
+
+- Accounts carrying bot flags that are not on your server's authorized bot list
+- Known malicious bot IDs sourced from Harbor's continuously updated threat database
+- Selfbots — user accounts exhibiting automated behavior patterns inconsistent with normal human usage
+- Accounts that join the server and immediately send DMs to members or post invite links in channels
+
+## Enabling Anti-Bot
+
+To enable anti-bot protection, run:
+
+```bash
+/harbor anti-bot enable
+```
+
+## Configuration Options
+
+| Option | Description | Default |
+|---|---|---|
+| `action` | Action taken when an unauthorized bot is detected | `kick` |
+| `allow-verified-bots` | Allow Discord-verified bots to join without restriction | `true` |
+| `dms-on-join` | Flag accounts that send DMs immediately after joining | `true` |
+| `alert-on-detection` | Post an alert to the log channel on detection | `true` |
+
+## Bot Whitelist
+
+Any legitimate bot already in your server — or one you plan to add — must be whitelisted before enabling anti-bot. To whitelist a bot by its Discord ID, run:
+
+```bash
+/harbor whitelist add bot:[BOT_ID]
+```
+
+Replace `[BOT_ID]` with the bot's numeric Discord application ID. You can find this in Discord's Developer Portal or by right-clicking the bot and selecting **Copy User ID** with Developer Mode enabled.
+
+<Note>
+  Discord-verified bots (those with the verified bot badge) are not flagged by default. Only non-verified bots are subject to anti-bot rules.
+</Note>
+
+<Warning>
+  Do not enable anti-bot without first whitelisting all legitimate bots already in your server. Harbor will act on any non-whitelisted bot that matches detection rules.
+</Warning>

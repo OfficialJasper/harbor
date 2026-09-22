@@ -1,0 +1,63 @@
+---
+title: "Security Logs: Monitor Harbor System Activity"
+sidebarTitle: "Security Logs"
+description: "Configure Harbor System's security log channel to receive real-time alerts and detailed audit records of all security events and automated actions."
+---
+
+The security log channel is Harbor System's primary communication channel with your moderation team. Every detection event, automated action, configuration change, and system alert is posted there as a formatted embed in real time. Keeping this channel properly configured and visible to your moderation staff is essential — it provides the full audit trail you need to review Harbor's behavior, respond to incidents, and tune your security settings over time.
+
+## Setting Up Log Channel
+
+To designate a channel for Harbor's security logs, run:
+
+```bash
+/harbor logs channel:#security-logs
+```
+
+Harbor System will immediately begin posting all security events to that channel. Make sure the channel is private and accessible only to your moderation team.
+
+## What Gets Logged
+
+| Event | Severity | Description |
+|---|---|---|
+| Raid Detected | 🔴 Critical | A join flood exceeded the anti-raid threshold and triggered lockdown |
+| Member Banned/Kicked | 🟡 High | Harbor took automated action against a member |
+| Spam Detected | 🟡 High | A user triggered an anti-spam rule |
+| Nuke Attempt | 🔴 Critical | Anti-nuke detected a destructive action pattern |
+| Bot Detected | 🟡 High | An unauthorized bot joined the server |
+| Verification Failed | 🟢 Low | A member failed the verification challenge or timed out |
+| Whitelist Updated | 🔵 Info | A whitelist entry was added or removed |
+| Config Changed | 🔵 Info | A Harbor System configuration setting was modified |
+
+## Log Format
+
+Each log entry is posted as a Discord embed. The structure of a typical log embed looks like this:
+
+```
+┌─────────────────────────────────────────┐
+│  🔴  RAID DETECTED                      │
+├─────────────────────────────────────────┤
+│  Event Type   │  Anti-Raid Lockdown     │
+│  User         │  [Multiple accounts]    │
+│  Action Taken │  Lockdown activated     │
+│  Timestamp    │  2024-01-15 14:32:07 UTC│
+│  Details      │  12 joins in 8 seconds  │
+│               │  Threshold: 5 / 10s     │
+└─────────────────────────────────────────┘
+```
+
+All embeds include a direct link to the relevant audit log entry where applicable.
+
+## Separate Log Channels
+
+For high-traffic servers, you may want to route logs by severity to reduce noise. You can configure a dedicated channel for critical alerts separately from lower-severity informational logs:
+
+```bash
+/harbor logs critical-channel:#critical-alerts
+```
+
+This sends only 🔴 Critical events to the specified channel, keeping your main log channel for the full event stream. You can combine multiple severity-specific channels to build a tiered alerting structure that matches your team's workflow.
+
+<Note>
+  Harbor System requires **Send Messages** and **Embed Links** permissions in the log channel to post formatted logs.
+</Note>

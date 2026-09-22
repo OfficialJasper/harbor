@@ -1,0 +1,68 @@
+---
+title: "Harbor System Discord Permissions Explained"
+sidebarTitle: "Permissions"
+description: "Understand every Discord permission Harbor System requests, why each is needed, and how to configure role hierarchy for full functionality."
+---
+
+Harbor System requests specific Discord permissions to carry out automated security actions on your behalf. Understanding what each permission is used for helps you make an informed decision when authorizing the bot, and helps you diagnose issues if a feature is not working as expected after installation.
+
+## Required Permissions
+
+The table below covers every permission Harbor System requests, what it enables, and what breaks if it is missing.
+
+| Permission | Required For | Impact if Missing |
+|---|---|---|
+| Administrator | Full functionality (recommended) | Partial functionality — see minimal setup below |
+| Manage Guild | Anti-nuke, server lockdown | Anti-nuke disabled; lockdown unavailable |
+| Manage Channels | Channel lockdowns | Lockdown feature disabled |
+| Manage Roles | Role-based automated actions | Cannot assign or remove roles |
+| Manage Messages | Anti-spam message deletion | Cannot delete messages; spam filtering degraded |
+| Ban Members | Automated bans | Cannot auto-ban; raid and nuke responses limited |
+| Kick Members | Automated kicks | Cannot auto-kick; spam and bot responses limited |
+| View Audit Log | Nuke detection | Anti-nuke blind to server changes |
+| Send Messages | Bot responses and confirmations | Silent failures on commands |
+| Embed Links | Rich log embeds in log channel | Falls back to plain-text output |
+
+## Role Hierarchy
+
+Discord enforces a strict role hierarchy: a bot can only manage, kick, or ban members whose highest role is **below** the bot's own highest role. If Harbor System's role sits below a member's role, Harbor cannot take any moderated action against that member regardless of its permissions.
+
+Place Harbor System's role directly below your administrator roles and above all other roles it needs to moderate:
+
+```
+@Admin (your team)
+@Harbor System        ← Harbor's role must be here
+@Moderator
+@Trusted Member
+@Member
+@New Member           ← roles Harbor needs to manage
+```
+
+After installation, check **Server Settings → Roles** and drag the Harbor System role to the correct position. Any role below Harbor System can be moderated; any role above it cannot.
+
+## Minimal Permission Setup
+
+If your server policy does not allow granting Administrator to bots, you can grant a smaller set of permissions tailored to the modules you plan to use. The combinations below represent the minimum permissions needed for each protection type.
+
+**Raid protection only**
+- Manage Guild
+- Ban Members
+- View Audit Log
+
+**Spam protection only**
+- Manage Messages
+- Kick Members
+
+**Verification only**
+- Manage Roles
+- Send Messages
+
+You may combine these sets if you are enabling multiple modules. Note that without Administrator, you must also ensure Harbor System's role is manually positioned above all roles it needs to act on.
+
+<Warning>
+  If you do not grant Administrator, you must manually verify that Harbor's role sits above all roles it needs to manage. Missing permissions cause silent failures for automated actions.
+</Warning>
+
+## Checking Permissions
+
+Run `/harbor status` at any time to see a permissions health check. The status output flags any permissions that are missing or any role hierarchy conflicts that would prevent Harbor System from functioning correctly. Resolve all flagged items before enabling security modules.

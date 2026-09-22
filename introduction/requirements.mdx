@@ -1,0 +1,49 @@
+---
+title: "Harbor System Requirements and Prerequisites"
+sidebarTitle: "Requirements"
+description: "Review the Discord server permissions, role setup, and account requirements needed before adding Harbor System to your server."
+---
+
+Before you add Harbor System to your server, make sure your server and account meet the requirements below. Having the correct permissions and role structure in place before installation ensures that every security module works as intended and that Harbor System can take automated action without interruption.
+
+## Discord Server Requirements
+
+You need the following before proceeding with the Harbor System setup:
+
+- A Discord server of any size — Harbor System works on small private servers and large public communities alike.
+- Server owner or administrator access on the account you use to add the bot. Discord requires either of these permission levels to authorize a new bot application.
+- The ability to manage roles and channels on your server, which is necessary for configuring security modules and placing Harbor System's role correctly in the hierarchy.
+
+## Bot Permissions Required
+
+Harbor System requires specific Discord permissions to operate its security modules. The table below lists each permission and why it is needed.
+
+| Permission | Reason |
+|---|---|
+| Administrator *(recommended)* | Grants full access for all security features without the need to assign permissions individually |
+| Manage Guild | Required for anti-nuke protection and server-level configuration actions |
+| Manage Channels | Required for lockdown features that restrict channel access during an active threat |
+| Manage Roles | Required for role-based security actions such as assigning muted or verified roles |
+| Manage Messages | Required for anti-spam message deletion in monitored channels |
+| Ban Members | Required for automated bans triggered by security rules |
+| Kick Members | Required for automated kicks triggered by security rules |
+| View Audit Log | Required for nuke detection to monitor destructive administrative actions |
+| Send Messages / Embed Links | Required for bot responses, command output, and security log embeds |
+
+## Recommended Setup
+
+<Note>
+  While the Administrator permission is not strictly required, it is strongly recommended for full functionality. Granting individual permissions instead of Administrator may result in partial feature access if any required permission is missed or later revoked.
+</Note>
+
+If you prefer to grant individual permissions rather than Administrator, use the table above as your checklist and verify that all listed permissions are assigned to Harbor System's role before completing setup.
+
+## Role Hierarchy
+
+Harbor System's bot role must be positioned **above** any roles it will manage, assign to members, or remove from members in your server's role list. Discord enforces a strict hierarchy — a bot can only take action on roles that sit below its own role in the list.
+
+To check and adjust the role order, go to **Server Settings → Roles** and drag Harbor System's role above any roles it needs to interact with. This includes your muted role, your verified role, and any roles used by members who may be subject to automated moderation.
+
+<Warning>
+  If Harbor System's role is below other roles in the hierarchy, it will be unable to moderate members with those roles.
+</Warning>

@@ -1,0 +1,61 @@
+---
+title: "What is Harbor System? Discord Security Bot Guide"
+sidebarTitle: "What is Harbor?"
+description: "Harbor System is a Discord security bot designed to protect communities from raids, spam, malicious bots, and server abuse in real time."
+---
+
+Harbor System is an advanced Discord bot purpose-built for server security. It acts as a protective layer between your community and the bad actors who target Discord servers — including raiders, spammers, malicious bots, and abusive members. Rather than relying on manual moderation to catch every threat, Harbor System monitors your server continuously, applies your configured rule sets automatically, and responds to threats in real time, whether or not a moderator is online.
+
+## Core Mission
+
+Harbor System's goal is to give server administrators and moderation teams automated, real-time threat detection and response. Large Discord communities are frequent targets for coordinated raids, spam campaigns, and account-based abuse. Responding to these threats manually is slow, inconsistent, and exhausting. Harbor System handles the immediate response automatically — muting, kicking, or banning offending accounts the moment a threat is detected — so your team can focus on community management rather than reactive damage control.
+
+The bot is designed to be configurable without being complicated. You set the rules once, and Harbor System enforces them consistently around the clock.
+
+## How Harbor Works
+
+Harbor System follows a straightforward detection-and-response flow for every security event on your server.
+
+1. **Monitor** — Harbor System listens to server events in real time, including member joins, message activity, role and channel changes, and audit log entries.
+2. **Evaluate** — Each event is checked against your configured rule sets. Harbor System assesses factors such as account age, join rate, message frequency, content patterns, and historical behavior.
+3. **Act** — When an event matches a threat rule, Harbor System takes the configured automated action — issuing a warning, applying a mute, kicking the member, or issuing a ban — without requiring manual intervention.
+4. **Log** — Every action Harbor System takes is written to your designated security log channel, giving your moderation team a complete, timestamped audit trail of all security events and bot responses.
+
+## Key Security Modules
+
+Harbor System includes a suite of independent security modules that you can enable, disable, and configure separately.
+
+<CardGroup cols={2}>
+  <Card title="Anti-Raid" icon="shield-halved">
+    Detects and responds to coordinated join floods and mass-join events before raiders can disrupt your server.
+  </Card>
+  <Card title="Anti-Nuke" icon="bomb">
+    Monitors for mass deletions of channels, roles, and members and halts destructive actions by compromised or rogue accounts.
+  </Card>
+  <Card title="Anti-Spam" icon="message">
+    Rate-limits repeated messages, mention spam, and emoji floods to keep channels usable and free from message abuse.
+  </Card>
+  <Card title="Anti-Bot" icon="robot">
+    Identifies and blocks suspicious automated accounts using behavioral signals and account characteristic analysis.
+  </Card>
+  <Card title="Verification" icon="user-check">
+    Gates server access with CAPTCHA or reaction-based verification challenges to filter out bots and unverified accounts at the door.
+  </Card>
+  <Card title="Threat Detection" icon="radar">
+    Assigns real-time trust scores to users based on behavior and flags high-risk accounts for review or automated action.
+  </Card>
+</CardGroup>
+
+## Who Is Harbor For?
+
+Harbor System is built for any Discord community that needs consistent, automated moderation support. It is especially well suited for:
+
+- **Large public servers** where the volume of new members makes manual vetting impractical.
+- **Gaming communities** that are frequently targeted by trolls, cheater groups, or rival server raids.
+- **NFT and crypto communities** that attract bot accounts, scammers, and phishing attempts at high rates.
+- **Community hubs** hosting events or growing rapidly, where a sudden spike in new members creates vulnerability.
+- **Moderation teams** that need automated backup to enforce rules consistently when staff are offline or unavailable.
+
+<Info>
+  Harbor System operates entirely through Discord's slash command interface — no external dashboard or web portal required.
+</Info>

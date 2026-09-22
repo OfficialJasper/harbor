@@ -1,0 +1,75 @@
+---
+title: "Configuring Harbor System for Your Server"
+sidebarTitle: "Configuration"
+description: "Learn how to view, edit, and reset Harbor System's server configuration using slash commands and the config reference."
+---
+
+Harbor System is configured entirely through Discord slash commands — there is no web dashboard or external account required. Every setting is scoped to your server, takes effect immediately when you run the command, and can be changed or reset at any time from within Discord.
+
+<Note>
+  Only users with the configured admin role or server administrator permissions can modify Harbor System settings.
+</Note>
+
+## Viewing Current Config
+
+Run `/harbor config` in any channel to see a full summary of all current settings. The output lists every module's status and the active value of each configurable parameter.
+
+```
+/harbor config
+
+📋 Harbor System Configuration
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Anti-Raid      Enabled  (threshold: [THRESHOLD] joins/[TIMEWINDOW]s)
+✅ Anti-Spam      Enabled  (max messages: [MAX_MSG]/[TIMEWINDOW]s)
+❌ Anti-Nuke      Disabled
+❌ Anti-Bot       Disabled
+✅ Verification   Enabled  (mode: reaction)
+📋 Log Channel    #security-logs
+📣 Alert Role     @Moderators
+```
+
+Review this output after making any changes to confirm the new values were saved correctly.
+
+## Editing Settings
+
+Each module has its own config subcommand that accepts named parameters. You do not need to re-run the full setup wizard to change a single value — run only the command for the setting you want to update.
+
+**Set the anti-raid join threshold**
+
+```
+/harbor anti-raid threshold:5 window:10
+```
+
+Triggers the anti-raid response when 5 or more members join within a 10-second window. Adjust these values based on your server's typical join rate.
+
+**Set the anti-spam message threshold**
+
+```
+/harbor anti-spam max-messages:8 window:5
+```
+
+Flags a member as spamming when they send more than 8 messages within a 5-second window. Lower the window or message count for stricter enforcement.
+
+**Change the log channel**
+
+```
+/harbor logs channel:#new-log-channel
+```
+
+Redirects all security event output to the specified channel immediately. Make sure Harbor System has Send Messages and Embed Links permissions in the new channel before switching.
+
+## Resetting Configuration
+
+Run `/harbor reset` to reset all Harbor System settings for your server to their factory defaults. This clears your log channel, alert role, admin role, action channel, all module states, and all custom thresholds.
+
+<Warning>
+  `/harbor reset` resets ALL settings to defaults and cannot be undone. You will need to reconfigure Harbor System from scratch after running this command.
+</Warning>
+
+## Configuration Reference
+
+For a complete list of every configurable setting, its default value, accepted input range, and the command used to change it, see the Configuration Reference.
+
+<Card title="Configuration Reference" icon="book" href="/reference/configuration-reference">
+  View all configurable settings and their default values.
+</Card>

@@ -1,0 +1,53 @@
+---
+title: "Anti-Nuke: Prevent Destructive Server Actions"
+sidebarTitle: "Anti-Nuke"
+description: "Protect your Discord server from nuking attacks using Harbor System's anti-nuke module, which detects and reverses mass deletions and role changes."
+---
+
+"Nuking" refers to a category of attack in which a compromised administrator account or a malicious bot rapidly destroys a server's structure — deleting channels, wiping roles, mass-banning members, or overwriting server settings within seconds. Harbor System's anti-nuke module monitors your server's audit log in real time and halts these attacks the moment they are detected, stripping the responsible account's permissions before further damage can occur.
+
+## What Anti-Nuke Detects
+
+Harbor System monitors for the following destructive actions:
+
+- **Mass channel deletion** — multiple channels deleted in rapid succession
+- **Mass role deletion or modification** — roles removed or their permissions altered at scale
+- **Mass member bans or kicks** — bulk removals of members from the server
+- **Webhook mass-creation or deletion** — abnormal webhook activity that may indicate a compromise
+- **Server settings wipe attempts** — sudden changes to server name, icon, verification level, or other core settings
+
+## Enabling Anti-Nuke
+
+To activate anti-nuke protection with default settings, run:
+
+```bash
+/harbor anti-nuke enable
+```
+
+## Configuration Options
+
+| Option | Description | Default |
+|---|---|---|
+| `channel-delete-threshold` | Max channel deletions allowed in the time window | `[DEFAULT]` |
+| `role-delete-threshold` | Max role deletions allowed in the time window | `[DEFAULT]` |
+| `ban-threshold` | Max bans allowed in the time window | `[DEFAULT]` |
+| `action` | Response when a nuke is detected | `strip-perms` |
+| `recovery` | Attempt to restore deleted channels and roles from cache | `false` |
+
+## Response Actions
+
+When anti-nuke detects a destructive action pattern, Harbor System responds immediately:
+
+1. **Permission strip or ban** — depending on your `action` setting, the responsible account has all server permissions removed (`strip-perms`) or is banned outright.
+2. **Alert posted** — a detailed alert is sent to your configured log channel, identifying the account, the actions taken, and the time of the event.
+3. **Recovery attempt** — if `recovery` is set to `true`, Harbor uses its internal cache to attempt recreation of any deleted channels or roles, restoring their names, permissions, and positions as closely as possible.
+
+Note that recovery is best-effort and depends on Harbor's cache state at the time of the attack. Channels or roles deleted before Harbor cached them may not be recoverable.
+
+<Warning>
+  Anti-nuke requires the **View Audit Log** permission to function. Without it, Harbor cannot identify which account is responsible for destructive actions.
+</Warning>
+
+<Note>
+  Whitelist your most trusted admin accounts and bots that legitimately manage channels and roles to prevent false positives.
+</Note>

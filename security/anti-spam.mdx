@@ -1,0 +1,70 @@
+---
+title: "Anti-Spam: Filter Message Spam and Abuse"
+sidebarTitle: "Anti-Spam"
+description: "Configure Harbor System's anti-spam module to automatically detect and remove message spam, mention floods, emoji abuse, and repeated content."
+---
+
+Harbor System's anti-spam module protects your channels from message floods, mention abuse, link spam, and other disruptive content patterns. The module works by applying per-user rate limiting within configurable time windows, matching messages against known spam patterns, and enforcing hard limits on mentions and emojis per message. When a user exceeds a threshold, Harbor takes the configured action automatically — no moderator intervention required.
+
+## Spam Types Detected
+
+<CardGroup cols={2}>
+  <Card title="Message Flood" icon="bolt">
+    Rapid-fire identical or similar messages sent in quick succession by a single user.
+  </Card>
+  <Card title="Mention Spam" icon="at">
+    Messages containing an excessive number of user or role pings intended to harass or notify-bomb members.
+  </Card>
+  <Card title="Emoji Flood" icon="face-smile">
+    Messages that contain an abnormally high number of emojis, disrupting channel readability.
+  </Card>
+  <Card title="Link Spam" icon="link">
+    Repeated posting of URLs, invite links, or phishing domains across messages.
+  </Card>
+  <Card title="Caps Abuse" icon="font">
+    Messages composed almost entirely of uppercase characters, commonly used to shout or harass.
+  </Card>
+  <Card title="Zalgo/Unicode Abuse" icon="triangle-exclamation">
+    Disruptive text using Zalgo encoding or unusual Unicode characters that break layout and readability.
+  </Card>
+</CardGroup>
+
+## Enabling Anti-Spam
+
+To enable anti-spam with default settings, run:
+
+```bash
+/harbor anti-spam enable
+```
+
+## Configuration Options
+
+| Option | Description | Default |
+|---|---|---|
+| `max-messages` | Max messages a user can send per time window | `[DEFAULT]` |
+| `window` | Time window in seconds for rate limiting | `5` |
+| `max-mentions` | Max user or role mentions allowed per message | `[DEFAULT]` |
+| `max-emojis` | Max emojis allowed per message | `[DEFAULT]` |
+| `duplicate-threshold` | Max identical messages before action is taken | `[DEFAULT]` |
+| `action` | Action taken when spam is detected | `delete` |
+| `escalation` | Escalate punishment on repeated violations | `true` |
+
+## Exemptions
+
+Some channels — such as bot command channels or dedicated shitposting areas — may not need spam filtering. To exempt a specific channel from anti-spam rules, run:
+
+```bash
+/harbor anti-spam exempt channel:#bot-commands
+```
+
+To exempt all members with a particular role from spam checks, add that role to the whitelist:
+
+```bash
+/harbor whitelist add role:@TrustedRole
+```
+
+Exemptions are additive — you can exempt multiple channels and roles independently.
+
+<Tip>
+  Enable escalation to automatically upgrade the punishment from delete → warn → mute → kick for repeat spammers without moderator intervention.
+</Tip>

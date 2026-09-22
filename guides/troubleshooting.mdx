@@ -1,0 +1,97 @@
+---
+title: "Troubleshooting Harbor System Issues"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose and fix common Harbor System issues including missing permissions, silent failures, modules not triggering, and log channel problems."
+---
+
+This guide covers the most common issues encountered after setting up Harbor System. Most problems fall into one of two categories: permission misconfiguration or a module that is configured but not enabled. Work through the relevant section below, and run `/harbor status` first if you are unsure where to start — it surfaces the most common issues automatically.
+
+<Tip>
+  Run `/harbor status` first whenever something seems wrong. It performs a health check and identifies permission or configuration problems automatically.
+</Tip>
+
+<AccordionGroup>
+  <Accordion title="Harbor System is not responding to commands">
+    If Harbor does not respond when you run a slash command, check the following:
+
+    - Confirm the bot is online by finding it in your server's member list. If it appears offline, see **The bot went offline** below.
+    - Verify Harbor has the **Send Messages** permission in the channel you are using. Without it, Harbor cannot post a response.
+    - Ensure you are using the correct slash command format: `/harbor`. Harbor does not respond to prefix-based commands.
+    - Try running the command in a different channel to rule out a channel-specific permission issue.
+  </Accordion>
+
+  <Accordion title="Anti-raid is not triggering during a test">
+    If you are testing anti-raid and it is not firing, check the following:
+
+    - Run `/harbor anti-raid status` to review your current threshold and window settings and confirm the module is enabled — not just configured.
+    - Verify Harbor has **Kick Members** and **Ban Members** permissions in your server settings. Without these, it cannot execute the configured action even if detection fires.
+    - The detection window resets after each interval. If your test joins were spread out across the window boundary, the threshold may not have been reached within a single window. Try again with joins clustered more tightly together.
+  </Accordion>
+
+  <Accordion title="Verification is not assigning roles">
+    If members complete verification but do not receive the correct role, check the following:
+
+    - Open Discord's server settings and confirm Harbor's bot role is positioned **above** both the verified and unverified roles in the role hierarchy. Discord prevents a role from managing roles ranked higher than itself.
+    - Verify Harbor has the **Manage Roles** permission.
+    - Confirm the correct roles are configured in Harbor's verification settings:
+      ```
+      /harbor verify status
+      ```
+      Check that the role IDs shown match the roles you intended to assign.
+  </Accordion>
+
+  <Accordion title="No messages in the log channel">
+    If Harbor is not posting to your log channel, check the following:
+
+    - Confirm the log channel is correctly set:
+      ```
+      /harbor logs channel:#your-channel
+      ```
+    - Check that Harbor has **Send Messages** and **Embed Links** permissions in the log channel. Harbor uses embeds for all log entries — without Embed Links, posts will fail silently.
+    - Make sure the events you are expecting to see are actually occurring. If you are waiting for a detection event and none has been triggered, the log channel will remain empty. Trigger a detectable action (such as sending repeated identical messages to test anti-spam) and confirm the event appears.
+  </Accordion>
+
+  <Accordion title="Harbor is banning or kicking legitimate members">
+    If Harbor is actioning members who should not be flagged, take the following steps:
+
+    - Whitelist the affected user to prevent further automated actions:
+      ```
+      /harbor whitelist add user:@User
+      ```
+    - Review your threshold and sensitivity settings — they may be set too aggressively for your server's normal activity level. Lower thresholds flag more users; consider raising them if false positives are common.
+    - Check the threat detection score for the affected member to understand why they were flagged:
+      ```
+      /harbor flags review user:@User
+      ```
+      This shows you which signals contributed to the score so you can assess whether the detection was correct or a misconfiguration.
+  </Accordion>
+
+  <Accordion title="Commands say 'Missing Permissions'">
+    If Harbor responds to a command with a missing permissions error, take the following steps:
+
+    - Run `/harbor status` and review the permissions health section. It lists any required permissions Harbor is currently missing.
+    - In Discord's **Server Settings → Roles**, locate Harbor's role and ensure all required permissions are enabled at the role level.
+    - Check role ordering: Harbor's role must be positioned above any roles it needs to assign or manage. Drag Harbor's role higher in the hierarchy if needed, then re-test the command.
+  </Accordion>
+
+  <Accordion title="The bot went offline">
+    If Harbor System appears offline in your member list:
+
+    - Harbor may be undergoing scheduled maintenance or experiencing an outage. Check the [Status Page](https://status.harborsystem.xyz) for live updates. *(PLACEHOLDER URL)*
+    - Join the support Discord for real-time incident updates and estimated resolution times: [DISCORD_INVITE_URL]
+    - If the status page shows no active incidents, try removing Harbor from your server and re-adding it. This resets the bot's connection without affecting your saved configuration.
+  </Accordion>
+</AccordionGroup>
+
+## Getting More Help
+
+If the sections above did not resolve your issue, the following resources are available:
+
+<CardGroup cols={2}>
+  <Card title="Discord Support Server" icon="discord" href="https://discord.gg/harborsystem">
+    Join the Harbor System support server for live help from the team and community.
+  </Card>
+  <Card title="Error Codes Reference" icon="triangle-exclamation" href="/reference/error-codes">
+    Look up specific error codes returned by Harbor System commands for detailed explanations and fixes.
+  </Card>
+</CardGroup>
