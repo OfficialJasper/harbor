@@ -1,7 +1,7 @@
 ---
-title: "Harbor System Error Codes and Messages"
+title: "Harbor System Error Codes and Troubleshooting Guide"
 sidebarTitle: "Error Codes"
-description: "Look up Harbor System error codes and bot response messages with their causes and recommended fixes."
+description: "Look up every Harbor System error code by category — permission, configuration, moderation, and system errors — with causes and step-by-step fixes."
 ---
 
 When Harbor System encounters an error, it responds with a structured error message containing a unique code, a short description, and context about the affected command. This page lists all known error codes, their causes, and the recommended steps to resolve each one. If an error persists after following the fix, collect the full error message and report it in the support Discord.
@@ -49,7 +49,7 @@ Harbor System error codes follow the format `HS-[CATEGORY]-[NUMBER]`, for exampl
 |---|---|---|---|
 | `HS-SYS-001` | Rate limited by Discord API | Too many actions were sent to Discord in a short period | Wait briefly and retry; Harbor handles Discord rate limits automatically in most cases |
 | `HS-SYS-002` | Internal error | An unexpected error occurred within the bot | Retry the command once; if the error persists, report it to the support Discord with the full error message |
-| `HS-SYS-003` | Service unavailable | Harbor System is undergoing maintenance or is temporarily offline | Check the status page at [status.harborsystem.xyz](https://status.harborsystem.xyz) [PLACEHOLDER] for updates |
+| `HS-SYS-003` | Service unavailable | Harbor System is undergoing maintenance or is temporarily offline | Check the status page at [status.harborsystem.xyz](https://status.harborsystem.xyz) for updates |
 
 <Note>
 If you encounter an error not listed here, please report it in the support Discord with the full error message and the command you ran.

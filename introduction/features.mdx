@@ -16,9 +16,9 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Coordinated raids using newly created or aged accounts
 
     **Key configuration options:**
-    - Join threshold: set the number of joins within a time window (e.g., `[THRESHOLD]` joins per `[SECONDS]` seconds) that triggers a raid alert
+    - Join threshold: set the number of joins within a time window (e.g., 10 joins per 30 seconds) that triggers a raid alert
     - Automated response action: choose between lockdown, kick, ban, or alert-only
-    - Account age filter: automatically flag or reject accounts newer than `[DAYS]` days old at join time
+    - Account age filter: automatically flag or reject accounts newer than 7 days old at join time
     - Raid lockdown mode: temporarily prevent all new joins until the threat is cleared
   </Accordion>
 
@@ -31,7 +31,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Bulk member bans or kicks executed maliciously
 
     **Key configuration options:**
-    - Deletion threshold: the number of channels, roles, or members that can be deleted within `[SECONDS]` seconds before Anti-Nuke activates
+    - Deletion threshold: the number of channels, roles, or members that can be deleted within 10 seconds before Anti-Nuke activates
     - Response action: strip permissions, ban the offending account, or both
     - Whitelist: exempt specific trusted administrator accounts from Anti-Nuke triggers
     - Notification target: designate a channel or role to be alerted when a nuke attempt is detected
@@ -47,7 +47,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Rapid cross-channel message spreading
 
     **Key configuration options:**
-    - Message rate limit: the number of messages allowed per user within `[SECONDS]` seconds before a warning or mute is applied
+    - Message rate limit: the number of messages allowed per user within 5 seconds before a warning or mute is applied
     - Mention limit: the maximum number of mentions permitted in a single message before action is taken
     - Emoji limit: the maximum number of emoji characters allowed per message
     - Escalation behavior: configure whether violations result in a warning, temporary mute, or kick based on repeat offense count
@@ -62,7 +62,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Self-bot activity that violates Discord's Terms of Service
 
     **Key configuration options:**
-    - Account age minimum: automatically flag accounts newer than `[DAYS]` days
+    - Account age minimum: automatically flag accounts newer than 7 days
     - Avatar check: flag accounts with no profile avatar as higher risk
     - Behavioral scoring: assign suspicion scores based on join timing, message patterns, and interaction behavior
     - Response action: choose to flag for review, kick, or ban detected bot accounts
@@ -80,7 +80,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Verification method: choose between CAPTCHA verification or reaction-based confirmation
     - Verification channel: designate the channel where new members complete the verification process
     - Verified role: specify the role granted to members who complete verification successfully
-    - Timeout: set a time limit (e.g., `[MINUTES]` minutes) after which unverified members are kicked automatically
+    - Timeout: set a time limit (e.g., 10 minutes) after which unverified members are kicked automatically
     - DM prompt: optionally send new members a direct message with verification instructions
   </Accordion>
 
@@ -108,7 +108,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Users whose behavior changes suddenly, indicating a compromised or repurposed account
 
     **Key configuration options:**
-    - Trust score threshold: set the score floor (e.g., `[SCORE]`) below which an account is flagged
+    - Trust score threshold: set the score floor (e.g., 40 out of 100) below which an account is flagged
     - Scoring factors: configure which signals contribute to trust scoring (account age, join history, message behavior, etc.)
     - Response on flag: choose to notify moderators, apply a restricted role, or take automated action
     - Score review interval: set how frequently Harbor System re-evaluates active member scores
@@ -140,7 +140,7 @@ Harbor System provides a comprehensive suite of security modules designed to pro
     - Run `/harbor logs` to pull a summary of recent security events
 
     **Key configuration options:**
-    - Command access control: restrict `/harbor` commands to specific roles (e.g., `[ADMIN_ROLE]`)
+    - Command access control: restrict `/harbor` commands to specific roles (e.g., your Moderator or Admin role)
     - Ephemeral responses: configure whether bot responses are visible only to the command user
     - Command channel restriction: limit which channels `/harbor` commands can be used in
   </Accordion>

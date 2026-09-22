@@ -1,5 +1,5 @@
 ---
-title: "Anti-Spam: Filter Message Spam and Abuse"
+title: "Anti-Spam: Auto-Filter Discord Message Spam and Abuse"
 sidebarTitle: "Anti-Spam"
 description: "Configure Harbor System's anti-spam module to automatically detect and remove message spam, mention floods, emoji abuse, and repeated content."
 ---
@@ -41,11 +41,11 @@ To enable anti-spam with default settings, run:
 
 | Option | Description | Default |
 |---|---|---|
-| `max-messages` | Max messages a user can send per time window | `[DEFAULT]` |
+| `max-messages` | Max messages a user can send per time window | `5` |
 | `window` | Time window in seconds for rate limiting | `5` |
-| `max-mentions` | Max user or role mentions allowed per message | `[DEFAULT]` |
-| `max-emojis` | Max emojis allowed per message | `[DEFAULT]` |
-| `duplicate-threshold` | Max identical messages before action is taken | `[DEFAULT]` |
+| `max-mentions` | Max user or role mentions allowed per message | `5` |
+| `max-emojis` | Max emojis allowed per message | `10` |
+| `duplicate-threshold` | Max identical messages before action is taken | `3` |
 | `action` | Action taken when spam is detected | `delete` |
 | `escalation` | Escalate punishment on repeated violations | `true` |
 

@@ -1,7 +1,7 @@
 ---
 title: "Harbor System Permission Levels and Access Control"
 sidebarTitle: "Permissions"
-description: "Full reference for Harbor System's permission model: admin roles, moderator roles, whitelist system, and per-command access requirements."
+description: "Full reference for Harbor System's permission model: admin roles, moderator tiers, the whitelist system, and per-command access requirements."
 ---
 
 Harbor System operates its own permission layer on top of Discord's native permissions, giving you fine-grained control over who can configure and use the bot. Rather than relying solely on Discord roles and channel overrides, Harbor introduces dedicated permission tiers that govern access to every command and configuration option. This means you can grant moderation capabilities to a team member without giving them Discord-level Administrator privileges, and you can lock down sensitive configuration to a specific admin role independent of server ownership.
@@ -36,7 +36,9 @@ The whitelist exempts specific users, roles, and bots from all automated Harbor 
 
 **Removing an entry:**
 
-- `/harbor whitelist remove user:@Username`
+- Remove a user: `/harbor whitelist remove user:@Username`
+- Remove a role: `/harbor whitelist remove role:@RoleName`
+- Remove a bot: `/harbor whitelist remove bot:[BOT_ID]`
 
 **Viewing the whitelist:**
 

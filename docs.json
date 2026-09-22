@@ -18,9 +18,6 @@
       "href": "https://discord.gg/harborsystem"
     }
   },
-  "topbar": {
-    "style": "default"
-  },
   "navigation": {
     "tabs": [
       {
@@ -44,9 +41,14 @@
               "getting-started/permissions",
               "getting-started/configuration"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Security",
+        "groups": [
           {
-            "group": "Security",
+            "group": "Security Modules",
             "pages": [
               "security/anti-raid",
               "security/anti-nuke",
@@ -56,7 +58,12 @@
               "security/security-logs",
               "security/threat-detection"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Commands",
+        "groups": [
           {
             "group": "Commands",
             "pages": [
@@ -65,7 +72,12 @@
               "commands/security",
               "commands/configuration"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
           {
             "group": "Guides",
             "pages": [
@@ -75,15 +87,25 @@
               "guides/handling-a-raid",
               "guides/troubleshooting"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "groups": [
           {
             "group": "Reference",
             "pages": [
               "reference/permissions",
               "reference/configuration-reference",
               "reference/error-codes",
-              "reference/changelog",
               "reference/faq"
+            ]
+          },
+          {
+            "group": "Updates",
+            "pages": [
+              "reference/changelog"
             ]
           }
         ]

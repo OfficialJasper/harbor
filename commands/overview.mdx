@@ -1,5 +1,5 @@
 ---
-title: "Harbor System Commands: Full Reference Overview"
+title: "Harbor System Slash Commands: Full Reference Guide"
 sidebarTitle: "Overview"
 description: "Browse all Harbor System slash commands organized by category: moderation, security module configuration, and server administration."
 ---
@@ -9,13 +9,13 @@ Harbor System is controlled entirely through Discord slash commands prefixed wit
 ## Command Categories
 
 <CardGroup cols={2}>
-  <Card title="Moderation Commands" icon="gavel" href="commands/moderation">
+  <Card title="Moderation Commands" icon="gavel" href="/commands/moderation">
     Manual moderation actions: ban, kick, mute, warn, and member history lookup.
   </Card>
-  <Card title="Security Commands" icon="shield" href="commands/security">
+  <Card title="Security Commands" icon="shield" href="/commands/security">
     Enable, disable, and tune automated security modules including anti-raid, anti-nuke, anti-spam, anti-bot, verification, and threat detection.
   </Card>
-  <Card title="Configuration Commands" icon="gear" href="commands/configuration">
+  <Card title="Configuration Commands" icon="gear" href="/commands/configuration">
     Global server settings: setup wizard, log channels, role assignments, and full configuration reset.
   </Card>
 </CardGroup>
@@ -50,6 +50,9 @@ Harbor System is controlled entirely through Discord slash commands prefixed wit
 | `/harbor mute` | Mute a member | Mod |
 | `/harbor warn` | Issue a warning | Mod |
 | `/harbor history` | View member's action history | Mod |
+| `/harbor unban` | Remove an active ban | Mod |
+| `/harbor unmute` | Remove an active mute early | Mod |
+| `/harbor case` | Look up a moderation case by ID | Mod |
 
 ## Permission Levels
 

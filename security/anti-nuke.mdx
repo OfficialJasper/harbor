@@ -1,5 +1,5 @@
 ---
-title: "Anti-Nuke: Prevent Destructive Server Actions"
+title: "Anti-Nuke: Prevent Destructive Discord Server Attacks"
 sidebarTitle: "Anti-Nuke"
 description: "Protect your Discord server from nuking attacks using Harbor System's anti-nuke module, which detects and reverses mass deletions and role changes."
 ---
@@ -28,9 +28,9 @@ To activate anti-nuke protection with default settings, run:
 
 | Option | Description | Default |
 |---|---|---|
-| `channel-delete-threshold` | Max channel deletions allowed in the time window | `[DEFAULT]` |
-| `role-delete-threshold` | Max role deletions allowed in the time window | `[DEFAULT]` |
-| `ban-threshold` | Max bans allowed in the time window | `[DEFAULT]` |
+| `channel-delete-threshold` | Max channel deletions allowed in the time window | `3` |
+| `role-delete-threshold` | Max role deletions allowed in the time window | `3` |
+| `ban-threshold` | Max bans allowed in the time window | `5` |
 | `action` | Response when a nuke is detected | `strip-perms` |
 | `recovery` | Attempt to restore deleted channels and roles from cache | `false` |
 
